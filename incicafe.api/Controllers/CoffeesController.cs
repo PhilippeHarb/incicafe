@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
+using incicafe.bll;
 using Microsoft.AspNetCore.Mvc;
 
 namespace incicafe.api.Controllers
@@ -11,10 +13,20 @@ namespace incicafe.api.Controllers
     public class CoffeesController : ControllerBase
     {
         // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        private readonly ICoffeeService _CoffeeService;
+
+        
+        public CoffeesController(ICoffeeService _CoffeeService)
         {
-            return new string[] { "espresso", "capuccino" };
+            this._CoffeeService = _CoffeeService;
+                
+        }
+        [HttpGet]
+        public ActionResult<IEnumerable<CoffeeDto>> Get(CancellationToken tk)
+        {
+            var liste = _CoffeeService.GetCoffees(tk);
+            return Ok(liste);
+            
         }
 
         // GET api/values/5

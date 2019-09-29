@@ -10,7 +10,7 @@ namespace incicafe.bll
         public IEnumerable<CoffeeDto> GetCoffees(CancellationToken tk)
         {
             var coffees = new List<CoffeeDto>();
-            coffees.Add(new CoffeeDto("Capuccino"));
+            coffees.Add(new CoffeeDto { name = "Cappucino" });
             return coffees;
 
         }

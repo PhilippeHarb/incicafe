@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\incicafe.bll\incicafe.bll.csproj" />
     <ProjectReference Include="..\incicafe.dal\incicafe.dal.csproj" />
   </ItemGroup>
 
